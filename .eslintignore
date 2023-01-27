@@ -1,0 +1,4 @@
+*.xml
+*.html
+dist/
+node_modules/

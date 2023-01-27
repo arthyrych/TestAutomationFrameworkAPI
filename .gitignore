@@ -1,0 +1,24 @@
+# IDE
+.idea
+.vscode
+
+# husky
+.husky/_
+
+# typescript
+dist
+
+# Dependency directories
+node_modules/
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Copy of the shell script for running tests
+testApi.sh
+
+# JUnit
+junit-results

@@ -1,0 +1,20 @@
+#!/bin/sh
+# This file will help you to run API tests
+# Please make a copy of this file without .dist ending. To testApi.sh
+# Make this file executable, run in your terminal in the root directory of the project: chmod +x ./test.sh
+# After this file is executable, you can start API tests by running in your terminal: ./testApi.sh
+# Terminal should be shell(bash) based, not Windows native cmd or PowerShell
+
+# You need to provide some environment variables before test run
+
+# APP_ENV defines environment to run tests against
+# APP_ENV can be dev
+export APP_ENV=dev
+
+# APP_TAG defines the spec files to run
+# APP_TAG can be all
+export APP_TAG=all
+
+case $APP_TAG in
+  *) yarn run test;;
+esac

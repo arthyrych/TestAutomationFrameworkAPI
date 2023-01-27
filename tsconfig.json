@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "target": "es2015",
+    "lib": ["es6", "dom"],
+    "module": "commonjs",
+    "skipLibCheck": true,
+    "strict": true,
+    "noImplicitAny": false,
+    "types": [
+      "node", "mocha", "chai", "supertest"
+    ],
+    "outDir": "dist",
+    "strictNullChecks": false,
+    "esModuleInterop": true,
+    "moduleResolution": "Node"
+  },
+  "include": [
+    "./*/*"
+  ]
+}
