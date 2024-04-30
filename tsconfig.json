@@ -8,7 +8,7 @@
     "strict": true,
     "noImplicitAny": false,
     "types": [
-      "node", "mocha", "chai", "supertest"
+      "node", "mocha",  "supertest"
     ],
     "outDir": "dist",
     "strictNullChecks": false,
