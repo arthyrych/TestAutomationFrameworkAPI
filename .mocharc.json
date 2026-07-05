@@ -1,0 +1,8 @@
+{
+  "spec": "specs/*.spec.ts",
+  "timeout": 20000,
+  "node-option": ["import=tsx"],
+  "require": ["mocha-steps"],
+  "reporter": "mocha-multi-reporters",
+  "reporter-options": "configFile=reportersConfig.json"
+}

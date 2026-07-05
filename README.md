@@ -7,15 +7,13 @@
 Needed software should be installed
 
 * GIT - [Git download][1]
-* Node.js 14th LTS version - [Node download][2]
-* Yarn - [Yarn install][10]
+* Node.js 22 LTS version - [Node download][2]
 
 To check all these items installed properly, run one by one in your terminal:
 ```shell
 node -v;
 npm -v;
 git --version;
-yarn --version;
 ```
 
 You should see versions for all these items, without any errors.
@@ -39,7 +37,7 @@ cd ...
 ```
 3. Install all required dependencies:
 ```shell
-yarn i
+npm install
 ```
 </details>
 
@@ -74,7 +72,7 @@ Before test run you need to provide some environment variables such as **APP_ENV
   <summary>Test runs</summary><br />
 
 There are several ways to run tests.<br />
-1. Directly via npm or yarn. In such a case the **APP_ENV** will be set as default.<br />
+1. Directly via npm. In such a case the **APP_ENV** will be set as default.<br />
 * All api tests: `npm test`
 
 2. Via `testApi.sh` file and following the instructions there.<br />
@@ -102,4 +100,3 @@ In order to work them together should be used [mocha-multi-reporters][8] package
 [7]: https://mochajs.org/#reporters
 [8]: https://www.npmjs.com/package/mocha-multi-reporters
 [9]: https://github.com/michaelleeallen/mocha-junit-reporter
-[10]: https://classic.yarnpkg.com/lang/en/docs/install/

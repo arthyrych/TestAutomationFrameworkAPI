@@ -1,4 +1,3 @@
-module.exports = {
-  env: 'dev'
-  
+export default {
+  env: "dev"
 }

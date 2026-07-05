@@ -1,13 +1,13 @@
-import {agent as request} from 'supertest'
-import {expect} from 'chai'
-import env from '../config'
+import {agent as request} from "supertest"
+import {expect} from "chai"
+import env from "../config"
 
-describe('test suite', () => {
+describe("test suite", () => {
   before(async () => {
     // add before hook
   })
 
-  it('test case', async () => {
+  it("test case", async () => {
     // add test case
   })
 
