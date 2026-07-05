@@ -1,21 +1,23 @@
 {
   "compilerOptions": {
     "experimentalDecorators": true,
-    "target": "es2015",
-    "lib": ["es6", "dom"],
-    "module": "commonjs",
+    "target": "ES2022",
+    "lib": ["ES2022"],
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
     "skipLibCheck": true,
     "strict": true,
     "noImplicitAny": false,
-    "types": [
-      "node", "mocha",  "supertest"
-    ],
-    "outDir": "dist",
     "strictNullChecks": false,
     "esModuleInterop": true,
-    "moduleResolution": "Node"
+    "types": ["node", "mocha"],
+    "noEmit": true
   },
   "include": [
-    "./*/*"
+    "**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
   ]
 }

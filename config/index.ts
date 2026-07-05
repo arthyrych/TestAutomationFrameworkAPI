@@ -1,4 +1,7 @@
-const env = process.env.APP_ENV || 'dev'
-const config = require(`./${env}`)
+import dev from "./dev"
 
-export default config
+// static env map (ESM: no dynamic require); add new envs here
+const configs = {dev}
+const env = (process.env.APP_ENV ?? "dev") as keyof typeof configs
+
+export default configs[env] ?? configs.dev

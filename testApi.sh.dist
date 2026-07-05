@@ -16,5 +16,5 @@ export APP_ENV=dev
 export APP_TAG=all
 
 case $APP_TAG in
-  *) yarn run test;;
+  *) npm test;;
 esac

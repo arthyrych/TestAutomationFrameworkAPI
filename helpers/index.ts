@@ -1,1 +1,1 @@
-export * from './generalHelpers'
+export * from "./generalHelpers"
