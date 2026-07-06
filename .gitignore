@@ -20,5 +20,8 @@ node_modules/
 # Copy of the shell script for running tests
 testApi.sh
 
+# Environment variables (contains the API token)
+.env
+
 # JUnit
 junit-results
