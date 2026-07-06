@@ -39,6 +39,12 @@ cd ...
 ```shell
 npm install
 ```
+4. Create your environment file:
+```shell
+cp .env.dist .env
+```
+5. Sign in at [GoRest][10] (GitHub/Google/Microsoft), generate an access token and put it into `.env` as `APP_TOKEN`.<br />
+`.env` is git-ignored, so the token never gets committed.
 </details>
 
 ---
@@ -49,11 +55,15 @@ npm install
   <summary>Implementation</summary><br />
 
 The framework is built on several packages including [Mocha][3], [Chai][4] and [SuperTest][5].<br /><br />
-The folder structure contains **config**, **data**, **helpers** and **specs**.<br />
+Tests run against [GoRest][10] - a public demo REST API with real CRUD persistence.<br />
+Records are scoped to your access token and reseeded daily; the free tier allows 90 requests/min,
+the full suite uses around 12 requests per run.<br /><br />
+The folder structure contains **config**, **data**, **helpers**, **specs** and **src**.<br />
 * **Config** folder includes everything needed dependent on environment.<br />
 * **Data** folder contains everything needed independent from environment.<br />
 * **Helpers** folder contains reusable helpers.<br />
-* **Specs** folder contains tests.<br /><br />
+* **Specs** folder contains tests.<br />
+* **Src** folder contains the HTTP client layer (`BaseClient` and resource clients such as `UsersClient`).<br /><br />
 </details>
 
 ---
@@ -61,7 +71,8 @@ The folder structure contains **config**, **data**, **helpers** and **specs**.<b
 <details>
   <summary>Environment variables</summary><br />
 
-Before test run you need to provide some environment variables such as **APP_ENV** and **APP_TAG**.<br />
+Before test run you need to provide some environment variables such as **APP_TOKEN**, **APP_ENV** and **APP_TAG**.<br />
+* **APP_TOKEN** is the GoRest access token, loaded automatically from the git-ignored `.env` file (copy `.env.dist`).<br />
 * **APP_ENV** defines environment to run tests against.<br />
 * **APP_TAG** defines spec files to run.<br />
 </details>
@@ -100,3 +111,4 @@ In order to work them together should be used [mocha-multi-reporters][8] package
 [7]: https://mochajs.org/#reporters
 [8]: https://www.npmjs.com/package/mocha-multi-reporters
 [9]: https://github.com/michaelleeallen/mocha-junit-reporter
+[10]: https://gorest.co.in/

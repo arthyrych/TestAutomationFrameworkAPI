@@ -1,5 +1,5 @@
 {
-  "name": "api-test-automation-framework",
+  "name": "test-automation-framework-api",
   "version": "1.0.0",
   "description": "RESTful API test automation framework",
   "type": "module",
@@ -10,14 +10,6 @@
     "prepare": "husky",
     "junit:clear": "rm -r junit-results || true"
   },
-  "repository": {
-    "type": "git",
-    "url": " "
-  },
-  "keywords": [
-    "Automation",
-    "API"
-  ],
   "author": "Artem Hyrych",
   "license": "ISC",
   "devDependencies": {
@@ -41,6 +33,6 @@
     "typescript-eslint": "8.62.1"
   },
   "engines": {
-    "node": ">=22.0.0"
+    "node": ">=22.9.0"
   }
 }
