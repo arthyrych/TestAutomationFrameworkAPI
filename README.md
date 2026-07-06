@@ -1,15 +1,17 @@
 # REST API Test Automation Framework
 
 ## Environment
+
 <details>
   <summary>Environment details</summary><br />
 
 Needed software should be installed
 
-* GIT - [Git download][1]
-* Node.js 22 LTS version - [Node download][2]
+- GIT - [Git download][1]
+- Node.js 22 LTS version - [Node download][2]
 
 To check all these items installed properly, run one by one in your terminal:
+
 ```shell
 node -v;
 npm -v;
@@ -19,32 +21,42 @@ git --version;
 You should see versions for all these items, without any errors.
 </details>
 
-***
+---
 
 ## Installation dependencies
+
 <details>
   <summary>Installation steps</summary><br />
 
 You should have access to the current repo. Preferable add a ssh key to your GitHub account.
 
 1. Navigate to a folder in which framework will be stored, and run in your terminal copied link (with ssh key):
+
 ```shell
 git clone ...
 ```
+
 2. Navigate into downloaded repository folder
+
 ```shell
 cd ...
 ```
+
 3. Install all required dependencies:
+
 ```shell
 npm install
 ```
+
 4. Create your environment file:
+
 ```shell
 cp .env.dist .env
 ```
-5. Sign in at [GoRest][10] (GitHub/Google/Microsoft), generate an access token and put it into `.env` as `APP_TOKEN`.<br />
-`.env` is git-ignored, so the token never gets committed.
+
+5. Sign in at [GoRest][10] (GitHub/Google/Microsoft), generate an access token,<br />
+   put it into `.env` as `APP_TOKEN`. `.env` is git-ignored, so the token never gets committed.
+
 </details>
 
 ---
@@ -59,11 +71,13 @@ Tests run against [GoRest][10] - a public demo REST API with real CRUD persisten
 Records are scoped to your access token and reseeded daily; the free tier allows 90 requests/min,
 the full suite uses around 12 requests per run.<br /><br />
 The folder structure contains **config**, **data**, **helpers**, **specs** and **src**.<br />
-* **Config** folder includes everything needed dependent on environment.<br />
-* **Data** folder contains everything needed independent from environment.<br />
-* **Helpers** folder contains reusable helpers.<br />
-* **Specs** folder contains tests.<br />
-* **Src** folder contains the HTTP client layer (`BaseClient` and resource clients such as `UsersClient`).<br /><br />
+
+- **Config** folder includes everything needed dependent on environment.<br />
+- **Data** folder contains everything needed independent from environment.<br />
+- **Helpers** folder contains reusable helpers.<br />
+- **Specs** folder contains tests.<br />
+- **Src** folder contains the HTTP client layer (`BaseClient` and resource clients such as `UsersClient`).<br /><br />
+
 </details>
 
 ---
@@ -72,9 +86,11 @@ The folder structure contains **config**, **data**, **helpers**, **specs** and *
   <summary>Environment variables</summary><br />
 
 Before test run you need to provide some environment variables such as **APP_TOKEN**, **APP_ENV** and **APP_TAG**.<br />
-* **APP_TOKEN** is the GoRest access token, loaded automatically from the git-ignored `.env` file (copy `.env.dist`).<br />
-* **APP_ENV** defines environment to run tests against.<br />
-* **APP_TAG** defines spec files to run.<br />
+
+- **APP_TOKEN** is the GoRest access token, loaded from the git-ignored `.env` file (copy `.env.dist`).<br />
+- **APP_ENV** defines environment to run tests against.<br />
+- **APP_TAG** defines spec files to run.<br />
+
 </details>
 
 ---
@@ -83,11 +99,18 @@ Before test run you need to provide some environment variables such as **APP_TOK
   <summary>Test runs</summary><br />
 
 There are several ways to run tests.<br />
+
 1. Directly via npm. In such a case the **APP_ENV** will be set as default.<br />
-* All api tests: `npm test`
+
+- All api tests: `npm test`
+- Healthcheck only: `npm run test:healthcheck`
+- Users specs only: `npm run test:users`
 
 2. Via `testApi.sh` file and following the instructions there.<br />
-This way gives you a possibility to set **APP_ENV** and **APP_TAG** variables manually.<br />
+   This way gives you a possibility to set **APP_ENV** and **APP_TAG** variables manually.<br />
+
+3. Via GitHub Actions: run the **Run all tests** workflow manually from the Actions tab.<br />
+   Requires the **APP_TOKEN** repository secret (Settings -> Secrets and variables -> Actions).<br />
 
 </details>
 

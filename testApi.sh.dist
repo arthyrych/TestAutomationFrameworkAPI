@@ -12,9 +12,11 @@
 export APP_ENV=dev
 
 # APP_TAG defines the spec files to run
-# APP_TAG can be all
+# APP_TAG can be all, healthcheck, users
 export APP_TAG=all
 
 case $APP_TAG in
+  healthcheck) npm run test:healthcheck;;
+  users) npm run test:users;;
   *) npm test;;
 esac
