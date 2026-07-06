@@ -1,7 +1,7 @@
-import {expect} from "chai"
-import {step} from "mocha-steps"
-import {generateRandomUser} from "../data"
-import {UsersClient} from "../src"
+import { expect } from "chai"
+import { step } from "mocha-steps"
+import { generateRandomUser } from "../data"
+import { UsersClient } from "../src"
 
 // step() aborts the remaining steps on failure - right tool for a dependent CRUD chain
 describe("users CRUD", () => {
@@ -24,18 +24,18 @@ describe("users CRUD", () => {
   step("reads the created user", async () => {
     const res = await users.getById(id)
     expect(res.status).to.equal(200)
-    expect(res.body).to.deep.include({id, ...user})
+    expect(res.body).to.deep.include({ id, ...user })
   })
 
   step("replaces the user with PUT", async () => {
-    const updated = {...user, name: "Updated Name", status: "inactive"}
+    const updated = { ...user, name: "Updated Name", status: "inactive" }
     const res = await users.update(id, updated)
     expect(res.status).to.equal(200)
     expect(res.body).to.deep.include(updated)
   })
 
   step("partially updates the user with PATCH", async () => {
-    const res = await users.partialUpdate(id, {status: "active"})
+    const res = await users.partialUpdate(id, { status: "active" })
     expect(res.status).to.equal(200)
     expect(res.body.status).to.equal("active")
   })

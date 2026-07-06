@@ -1,6 +1,6 @@
-import {faker} from "@faker-js/faker"
-import {getRandomItem} from "../helpers"
-import {User} from "../src"
+import { faker } from "@faker-js/faker"
+import { getRandomItem } from "../helpers"
+import { User } from "../src"
 
 // email is unique per call - GoRest responds 422 to duplicate emails
 export function generateRandomUser(): User {

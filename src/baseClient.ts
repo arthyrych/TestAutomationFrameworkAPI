@@ -1,4 +1,4 @@
-import {agent as request, Test} from "supertest"
+import { agent as request, Test } from "supertest"
 import env from "../config"
 
 // fails fast with an actionable message instead of cryptic 401s from the API
