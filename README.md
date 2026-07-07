@@ -1,5 +1,19 @@
 # REST API Test Automation Framework
 
+## Features
+
+<details>
+  <summary>Framework features</summary><br />
+
+- Full CRUD coverage - create, read, update (PUT/PATCH) and delete against a real persisting API
+- OOP client layer - resource clients extend a shared `BaseClient` (auth, base URL, HTTP verbs)
+- Data-driven - user data is faker-generated, unique per run
+- Contract validation - responses parsed with zod schemas to catch API drift
+- Negative testing - 401/404/422 flows, including unauthenticated requests
+- Multi-environment - config selected via `APP_ENV`, spec subsets via `APP_TAG`
+
+</details>
+
 ## Environment
 
 <details>

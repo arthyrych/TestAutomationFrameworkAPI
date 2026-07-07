@@ -1,6 +1,6 @@
 import { expect } from "chai"
 import { generateRandomUser } from "../data"
-import { UsersClient } from "../src"
+import { validationErrorsSchema, UsersClient } from "../src"
 
 describe("users negative", () => {
   it("responds 401 when creating a user without a token", async () => {
@@ -18,5 +18,6 @@ describe("users negative", () => {
     const res = await new UsersClient().create({ gender, name, status })
     expect(res.status).to.equal(422)
     expect(res.body).to.deep.include({ field: "email", message: "can't be blank" })
+    validationErrorsSchema.parse(res.body)
   })
 })
