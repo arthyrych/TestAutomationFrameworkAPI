@@ -1,7 +1,7 @@
-// explicit named exports - star exports would silently drop names colliding across protocols
+// explicit named exports - star exports would silently drop names colliding across REST and GraphQL
 
 // GraphQL (GraphQLZero)
-export { GraphqlBaseClient } from "./graphqlBaseClient"
+export { GraphqlBaseClient } from "./graphql/baseClient"
 export {
   createUserResponseSchema,
   deleteUserResponseSchema,
@@ -10,12 +10,12 @@ export {
   graphqlUserSchema,
   nullUserResponseSchema,
   updateUserResponseSchema
-} from "./graphqlSchemas"
-export { UsersGraphqlClient } from "./usersGraphqlClient"
-export type { GraphqlUser } from "./usersGraphqlClient"
+} from "./graphql/schemas"
+export { UsersGraphqlClient } from "./graphql/usersClient"
+export type { GraphqlUser } from "./graphql/usersClient"
 
 // REST (GoRest)
-export { BaseClient, getToken } from "./baseClient"
-export { userSchema, usersListSchema, validationErrorsSchema } from "./schemas"
-export { UsersClient } from "./usersClient"
-export type { User } from "./usersClient"
+export { getRestToken, RestBaseClient } from "./rest/baseClient"
+export { restUserSchema, restUsersListSchema, restValidationErrorsSchema } from "./rest/schemas"
+export { UsersRestClient } from "./rest/usersClient"
+export type { RestUser } from "./rest/usersClient"

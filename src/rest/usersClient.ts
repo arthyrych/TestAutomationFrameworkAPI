@@ -1,17 +1,16 @@
-// REST (GoRest)
-import { BaseClient } from "./baseClient"
+import { RestBaseClient } from "./baseClient"
 
-export interface User {
+export interface RestUser {
   email: string
   gender: string
   name: string
   status: string
 }
 
-export class UsersClient extends BaseClient {
+export class UsersRestClient extends RestBaseClient {
   private readonly resource = "/users"
 
-  create(user: Partial<User>) {
+  create(user: Partial<RestUser>) {
     return this.post(this.resource, user)
   }
 
@@ -23,7 +22,7 @@ export class UsersClient extends BaseClient {
     return this.get(this.resource)
   }
 
-  partialUpdate(id: number, patch: Partial<User>) {
+  partialUpdate(id: number, patch: Partial<RestUser>) {
     return this.patch(`${this.resource}/${id}`, patch)
   }
 
@@ -31,7 +30,7 @@ export class UsersClient extends BaseClient {
     return this.del(`${this.resource}/${id}`)
   }
 
-  update(id: number, user: User) {
+  update(id: number, user: RestUser) {
     return this.put(`${this.resource}/${id}`, user)
   }
 }

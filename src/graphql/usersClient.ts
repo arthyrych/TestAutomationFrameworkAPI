@@ -1,5 +1,4 @@
-// GraphQL (GraphQLZero)
-import { GraphqlBaseClient } from "./graphqlBaseClient"
+import { GraphqlBaseClient } from "./baseClient"
 
 export interface GraphqlUser {
   email: string
