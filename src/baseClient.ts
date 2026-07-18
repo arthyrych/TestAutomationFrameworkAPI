@@ -1,3 +1,4 @@
+// REST (GoRest)
 import { agent as request, Test } from "supertest"
 import env from "../config"
 
@@ -9,7 +10,7 @@ export function getToken(): string {
 }
 
 export class BaseClient {
-  protected agent = request(env.baseUrl)
+  protected agent = request(env.restUrl)
   private authHeader: string
 
   // pass null to send unauthenticated requests (negative tests)

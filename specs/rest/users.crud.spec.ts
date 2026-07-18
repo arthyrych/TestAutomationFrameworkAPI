@@ -1,7 +1,7 @@
 import { expect } from "chai"
 import { step } from "mocha-steps"
-import { generateRandomUser } from "../data"
-import { userSchema, UsersClient } from "../src"
+import { generateRandomUser } from "../../data"
+import { userSchema, UsersClient } from "../../src"
 
 // step() aborts the remaining steps on failure - right tool for a dependent CRUD chain
 describe("users CRUD", () => {

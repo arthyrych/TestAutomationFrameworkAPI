@@ -1,4 +1,5 @@
 export default {
-  baseUrl: "https://gorest.co.in/public/v2",
-  env: "dev"
+  env: "dev", // shared
+  graphqlUrl: "https://graphqlzero.almansi.me/api", // GraphQL (GraphQLZero)
+  restUrl: "https://gorest.co.in/public/v2" // REST (GoRest)
 }

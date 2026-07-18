@@ -1,5 +1,5 @@
 import { expect } from "chai"
-import { usersListSchema, UsersClient } from "../src"
+import { usersListSchema, UsersClient } from "../../src"
 
 // runs unauthenticated - GoRest allows public reads, so this works even without a token
 describe("healthcheck", () => {

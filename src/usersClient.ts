@@ -1,3 +1,4 @@
+// REST (GoRest)
 import { BaseClient } from "./baseClient"
 
 export interface User {

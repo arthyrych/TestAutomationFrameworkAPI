@@ -1,3 +1,4 @@
+// REST (GoRest)
 import { z } from "zod"
 
 // response contracts - specs call .parse() after status assertions to catch API drift
