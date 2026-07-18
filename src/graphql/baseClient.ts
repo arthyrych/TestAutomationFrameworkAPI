@@ -1,6 +1,5 @@
-// GraphQL (GraphQLZero)
 import { agent as request } from "supertest"
-import env from "../config"
+import env from "../../config"
 
 // no auth handling - GraphQLZero is public, so GraphQL suites run without APP_TOKEN
 export class GraphqlBaseClient {

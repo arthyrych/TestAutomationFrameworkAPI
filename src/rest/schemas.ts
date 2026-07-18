@@ -1,8 +1,7 @@
-// REST (GoRest)
 import { z } from "zod"
 
 // response contracts - specs call .parse() after status assertions to catch API drift
-export const userSchema = z.object({
+export const restUserSchema = z.object({
   id: z.number(),
   name: z.string(),
   email: z.email(),
@@ -10,7 +9,7 @@ export const userSchema = z.object({
   status: z.enum(["active", "inactive"])
 })
 
-export const usersListSchema = z.array(userSchema)
+export const restUsersListSchema = z.array(restUserSchema)
 
 // GoRest 422 body: array of field errors
-export const validationErrorsSchema = z.array(z.object({ field: z.string(), message: z.string() }))
+export const restValidationErrorsSchema = z.array(z.object({ field: z.string(), message: z.string() }))

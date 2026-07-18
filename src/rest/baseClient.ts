@@ -1,20 +1,19 @@
-// REST (GoRest)
 import { agent as request, Test } from "supertest"
-import env from "../config"
+import env from "../../config"
 
 // fails fast with an actionable message instead of cryptic 401s from the API
-export function getToken(): string {
+export function getRestToken(): string {
   const token = process.env.APP_TOKEN
   if (!token) throw new Error("APP_TOKEN is not set - copy .env.dist to .env and add your gorest.co.in token")
   return token
 }
 
-export class BaseClient {
+export class RestBaseClient {
   protected agent = request(env.restUrl)
   private authHeader: string
 
   // pass null to send unauthenticated requests (negative tests)
-  constructor(token: string | null = getToken()) {
+  constructor(token: string | null = getRestToken()) {
     this.authHeader = token ? `Bearer ${token}` : ""
   }
 

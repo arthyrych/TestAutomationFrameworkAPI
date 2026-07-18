@@ -8,7 +8,7 @@
 - Full CRUD coverage - create, read, update (PUT/PATCH) and delete against a real persisting API
 - GraphQL coverage - queries, variable-driven mutations and error-shape tests, sharing the same
   SuperTest + zod conventions as the REST suites
-- OOP client layer - resource clients extend a shared `BaseClient` (REST) or `GraphqlBaseClient` (GraphQL)
+- OOP client layer - resource clients extend a shared `RestBaseClient` (REST) or `GraphqlBaseClient` (GraphQL)
 - Data-driven - user data is faker-generated, unique per run
 - Contract validation - responses parsed with zod schemas to catch API drift
 - Negative testing - REST 401/404/422 flows and GraphQL parse/validation error shapes
@@ -92,15 +92,17 @@ mutations. Mutation persistence is faked - responses are realistic but nothing i
 CRUD suite asserts on mutation responses instead of round-trip reads. The GraphQL suites use around
 7 requests per run.<br /><br />
 The folder structure contains **config**, **data**, **helpers**, **specs** and **src**.<br />
-Every file in the shared folders declares its protocol ownership in a header comment:
-`REST (GoRest)`, `GraphQL (GraphQLZero)` or `shared`.<br />
+Protocol-owned code lives in `rest/` and `graphql/` subfolders (in `src/`, `data/` and `specs/`) - the
+folder names the protocol; shared files are labeled with a `// shared: REST + GraphQL` header comment.<br />
 
 - **Config** folder includes everything needed dependent on environment.<br />
-- **Data** folder contains everything needed independent from environment.<br />
+- **Data** folder contains everything needed independent from environment, split into `data/rest/` and
+  `data/graphql/`.<br />
 - **Helpers** folder contains reusable helpers.<br />
 - **Specs** folder contains tests, split by protocol into `specs/rest/` and `specs/graphql/`.<br />
-- **Src** folder contains the HTTP client layer: REST (`BaseClient`, resource clients such as `UsersClient`)
-  and GraphQL (`GraphqlBaseClient`, `UsersGraphqlClient` with its query documents).<br /><br />
+- **Src** folder contains the HTTP client layer: `src/rest/` (`RestBaseClient`, resource clients such as
+  `UsersRestClient`) and `src/graphql/` (`GraphqlBaseClient`, `UsersGraphqlClient` with its query
+  documents).<br /><br />
 
 </details>
 

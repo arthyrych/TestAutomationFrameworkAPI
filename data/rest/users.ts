@@ -1,9 +1,8 @@
-// REST (GoRest)
 import { faker } from "@faker-js/faker"
-import { generateUniqueEmail, getRandomItem } from "../helpers"
-import { User } from "../src"
+import { generateUniqueEmail, getRandomItem } from "../../helpers"
+import { RestUser } from "../../src"
 
-export function generateRandomUser(): User {
+export function generateRandomRestUser(): RestUser {
   return {
     email: generateUniqueEmail(),
     gender: getRandomItem(["male", "female"]),

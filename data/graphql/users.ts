@@ -1,7 +1,6 @@
-// GraphQL (GraphQLZero)
 import { faker } from "@faker-js/faker"
-import { generateUniqueEmail } from "../helpers"
-import { GraphqlUser } from "../src"
+import { generateUniqueEmail } from "../../helpers"
+import { GraphqlUser } from "../../src"
 
 export function generateRandomGraphqlUser(): GraphqlUser {
   return {
