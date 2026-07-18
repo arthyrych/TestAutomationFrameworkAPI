@@ -90,7 +90,7 @@ the REST suites use around 12 requests per run.<br /><br />
 GraphQL tests run against [GraphQLZero][11] - a public GraphQL API (no auth) with users queries and
 mutations. Mutation persistence is faked - responses are realistic but nothing is stored - so the GraphQL
 CRUD suite asserts on mutation responses instead of round-trip reads. The GraphQL suites use around
-8 requests per run.<br /><br />
+7 requests per run.<br /><br />
 The folder structure contains **config**, **data**, **helpers**, **specs** and **src**.<br />
 Every file in the shared folders declares its protocol ownership in a header comment:
 `REST (GoRest)`, `GraphQL (GraphQLZero)` or `shared`.<br />

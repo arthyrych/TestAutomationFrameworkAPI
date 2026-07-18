@@ -13,15 +13,13 @@ export const graphqlUserSchema = z.object({
 const dataOf = (field: string, schema: z.ZodType) => z.object({ data: z.object({ [field]: schema }) })
 
 export const createUserResponseSchema = dataOf("createUser", graphqlUserSchema)
-export const deleteUserResponseSchema = dataOf("deleteUser", z.literal(true))
+export const deleteUserResponseSchema = dataOf("deleteUser", z.boolean())
 export const getUserResponseSchema = dataOf("user", graphqlUserSchema)
 export const updateUserResponseSchema = dataOf("updateUser", graphqlUserSchema)
 
-// nonexistent id: HTTP 200 with an all-null user object, not a null user
-export const nullUserResponseSchema = dataOf(
-  "user",
-  z.object({ id: z.null(), name: z.null(), username: z.null(), email: z.null() })
-)
+// nonexistent id: HTTP 200 with an all-null user object; derived from the user shape to stay in sync
+const nullUserFields = Object.fromEntries(Object.keys(graphqlUserSchema.shape).map(field => [field, z.null()]))
+export const nullUserResponseSchema = dataOf("user", z.object(nullUserFields))
 
 // parse/validation failures: HTTP 400 with an errors array and no data
 export const graphqlErrorsSchema = z.object({

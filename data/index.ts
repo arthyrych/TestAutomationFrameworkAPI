@@ -1,5 +1,7 @@
+// explicit named exports - star exports would silently drop names colliding across protocols
+
 // GraphQL (GraphQLZero)
-export * from "./graphqlUsers"
+export { generateRandomGraphqlUser } from "./graphqlUsers"
 
 // REST (GoRest)
-export * from "./users"
+export { generateRandomUser } from "./users"
