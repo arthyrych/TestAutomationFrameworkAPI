@@ -1,3 +1,4 @@
+// shared: REST + GraphQL
 // Note: please add new entities in alphabetical order
 
 export function getRandomItem(arr) {

@@ -1,3 +1,4 @@
+// REST (GoRest)
 import { faker } from "@faker-js/faker"
 import { getRandomItem } from "../helpers"
 import { User } from "../src"

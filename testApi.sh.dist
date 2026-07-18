@@ -12,11 +12,14 @@
 export APP_ENV=dev
 
 # APP_TAG defines the spec files to run
-# APP_TAG can be all, healthcheck, users
+# APP_TAG can be all, graphql, healthcheck, rest, users
+# graphql/rest select a protocol; healthcheck/users run the entity across both protocols
 export APP_TAG=all
 
 case $APP_TAG in
+  graphql) npm run test:graphql;;
   healthcheck) npm run test:healthcheck;;
+  rest) npm run test:rest;;
   users) npm run test:users;;
   *) npm test;;
 esac

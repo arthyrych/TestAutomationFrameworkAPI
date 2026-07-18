@@ -1,6 +1,6 @@
 import { expect } from "chai"
-import { generateRandomUser } from "../data"
-import { validationErrorsSchema, UsersClient } from "../src"
+import { generateRandomUser } from "../../data"
+import { validationErrorsSchema, UsersClient } from "../../src"
 
 describe("users negative", () => {
   it("responds 401 when creating a user without a token", async () => {
