@@ -12,8 +12,9 @@
 export APP_ENV=dev
 
 # APP_TAG defines the spec files to run
-# APP_TAG can be all, graphql, healthcheck, rest, users
-# graphql/rest run just that side's specs; healthcheck/users run the entity across both REST and GraphQL
+# APP_TAG can be all, graphql, healthcheck, rest, users, ws
+# graphql/rest/ws run just that side's specs; healthcheck runs across REST, GraphQL and WebSocket,
+# users across REST and GraphQL
 export APP_TAG=all
 
 case $APP_TAG in
@@ -21,5 +22,6 @@ case $APP_TAG in
   healthcheck) npm run test:healthcheck;;
   rest) npm run test:rest;;
   users) npm run test:users;;
+  ws) npm run test:ws;;
   *) npm test;;
 esac

@@ -1,4 +1,4 @@
-# REST and GraphQL API Test Automation Framework
+# REST, GraphQL and WebSocket API Test Automation Framework
 
 ## Features
 
@@ -8,7 +8,10 @@
 - Full CRUD coverage - create, read, update (PUT/PATCH) and delete against a real persisting API
 - GraphQL coverage - queries, variable-driven mutations and error-shape tests, sharing the same
   SuperTest + zod conventions as the REST suites
-- OOP client layer - resource clients extend a shared `RestBaseClient` (REST) or `GraphqlBaseClient` (GraphQL)
+- WebSocket coverage - connection lifecycle, echo round-trips and timeout/negative flows over the
+  native Node WebSocket client (no extra dependencies)
+- OOP client layer - resource clients extend a shared `RestBaseClient` (REST), `GraphqlBaseClient`
+  (GraphQL) or `WsBaseClient` (WebSocket)
 - Data-driven - user data is faker-generated, unique per run
 - Contract validation - responses parsed with zod schemas to catch API drift
 - Negative testing - REST 401/404/422 flows and GraphQL parse/validation error shapes
@@ -72,7 +75,8 @@ cp .env.dist .env
 
 5. Sign in at [GoRest][10] (GitHub/Google/Microsoft), generate an access token,<br />
    put it into `.env` as `APP_TOKEN`. `.env` is git-ignored, so the token never gets committed.<br />
-   The token is needed only for the REST (GoRest) suites - `npm run test:graphql` works without it.
+   The token is needed only for the REST (GoRest) suites -<br />
+   `npm run test:graphql` and `npm run test:ws` work without it.
 
 </details>
 
@@ -91,18 +95,23 @@ GraphQL tests run against [GraphQLZero][11] - a public GraphQL API (no auth) wit
 mutations. Mutation persistence is faked - responses are realistic but nothing is stored - so the GraphQL
 CRUD suite asserts on mutation responses instead of round-trip reads. The GraphQL suites use around
 7 requests per run.<br /><br />
+WebSocket tests run against [echo.websocket.org][12] - a free public echo server (no auth) that repeats
+every frame back. The suites use the native Node WebSocket client (stable since Node 22.4, no extra
+packages) and open around 5 short-lived connections per run. The server sends a
+`Request served by ...` greeting frame right after connecting, which the client consumes before echoing.<br /><br />
 The folder structure contains **config**, **data**, **helpers**, **specs** and **src**.<br />
-REST- and GraphQL-owned code lives in `rest/` and `graphql/` subfolders (in `src/`, `data/` and `specs/`);
-shared files are labeled with a `// shared: REST + GraphQL` header comment.<br />
+Code owned by one side lives in `rest/`, `graphql/` and `ws/` subfolders (in `src/`, `data/` and `specs/`);
+shared files are labeled with a `// shared: ...` header comment listing the sides that use them.<br />
 
 - **Config** folder includes everything needed dependent on environment.<br />
-- **Data** folder contains everything needed independent from environment, split into `data/rest/` and
-  `data/graphql/`.<br />
+- **Data** folder contains everything needed independent from environment, split into `data/rest/`,
+  `data/graphql/` and `data/ws/`.<br />
 - **Helpers** folder contains reusable helpers.<br />
-- **Specs** folder contains tests, split into `specs/rest/` and `specs/graphql/`.<br />
-- **Src** folder contains the HTTP client layer: `src/rest/` (`RestBaseClient`, resource clients such as
-  `UsersRestClient`) and `src/graphql/` (`GraphqlBaseClient`, `UsersGraphqlClient` with its query
-  documents).<br /><br />
+- **Specs** folder contains tests, split into `specs/rest/`, `specs/graphql/` and `specs/ws/`.<br />
+- **Src** folder contains the client layer: `src/rest/` (`RestBaseClient`, resource clients such as
+  `UsersRestClient`), `src/graphql/` (`GraphqlBaseClient`, `UsersGraphqlClient` with its query
+  documents) and `src/ws/` (`WsBaseClient` - a promise wrapper around the native WebSocket client -
+  and `EchoWsClient`).<br /><br />
 
 </details>
 
@@ -114,9 +123,9 @@ shared files are labeled with a `// shared: REST + GraphQL` header comment.<br /
 Before test run you need to provide some environment variables such as **APP_TOKEN**, **APP_ENV** and **APP_TAG**.<br />
 
 - **APP_TOKEN** is the GoRest access token, loaded from the git-ignored `.env` file (copy `.env.dist`).
-  Needed only by the REST suites - GraphQL suites run without it.<br />
+  Needed only by the REST suites - GraphQL and WebSocket suites run without it.<br />
 - **APP_ENV** defines environment to run tests against.<br />
-- **APP_TAG** defines spec files to run: `all`, `graphql`, `healthcheck`, `rest` or `users`.<br />
+- **APP_TAG** defines spec files to run: `all`, `graphql`, `healthcheck`, `rest`, `users` or `ws`.<br />
 
 </details>
 
@@ -132,7 +141,8 @@ There are several ways to run tests.<br />
 - All api tests: `npm test`
 - REST specs only: `npm run test:rest`
 - GraphQL specs only: `npm run test:graphql`
-- Healthchecks for both REST and GraphQL (tokenless): `npm run test:healthcheck`
+- WebSocket specs only: `npm run test:ws`
+- Healthchecks for REST, GraphQL and WebSocket (tokenless): `npm run test:healthcheck`
 - Users specs for both REST and GraphQL: `npm run test:users`
 
 2. Via `testApi.sh` file and following the instructions there.<br />
@@ -165,3 +175,4 @@ In order to work them together should be used [mocha-multi-reporters][8] package
 [9]: https://github.com/michaelleeallen/mocha-junit-reporter
 [10]: https://gorest.co.in/
 [11]: https://graphqlzero.almansi.me/
+[12]: https://echo.websocket.org/

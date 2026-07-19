@@ -1,4 +1,4 @@
-// shared: REST + GraphQL
+// shared: REST + GraphQL + WebSocket
 import dev from "./dev"
 
 // static env map (ESM: no dynamic require); add new envs here

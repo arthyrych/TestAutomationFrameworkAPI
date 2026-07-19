@@ -1,7 +1,7 @@
 {
   "name": "test-automation-framework-api",
   "version": "1.0.0",
-  "description": "REST and GraphQL API test automation framework",
+  "description": "REST, GraphQL and WebSocket API test automation framework",
   "type": "module",
   "main": "index.js",
   "scripts": {
@@ -10,6 +10,7 @@
     "test:healthcheck": "mocha \"specs/**/healthcheck.spec.ts\"",
     "test:rest": "mocha \"specs/rest/**/*.spec.ts\"",
     "test:users": "mocha \"specs/**/users.*.spec.ts\"",
+    "test:ws": "mocha \"specs/ws/**/*.spec.ts\"",
     "lint": "eslint . && prettier --check . && tsc",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
